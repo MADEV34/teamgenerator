@@ -7,7 +7,7 @@ ui <- dashboardPage(dashboardHeader(disable = T) , dashboardSidebar(disable = T)
                     
                     dashboardBody(
                         fluidPage(useShinyjs(), theme = shinytheme("united"),
-                            titlePanel("Tournoi annuel de washer"), "31 août 2019", align = "center"),
+                            titlePanel("Générateur d'équipe aléatoire"), align = "center"),
                         
                         fluidRow(
 
@@ -35,15 +35,7 @@ ui <- dashboardPage(dashboardHeader(disable = T) , dashboardSidebar(disable = T)
                                        textInput("player18", NULL, value = "", width = NULL, placeholder = "Nom du joueur 18")),
                                        splitLayout(textInput("player19", NULL, value = "", width = NULL, placeholder = "Nom du joueur 19"),
                                        textInput("player20", NULL, value = "", width = NULL, placeholder = "Nom du joueur 20")),
-                                       splitLayout(actionButton("go1","Formation de l'équipe 1"),actionButton("go2","Formation de l'équipe 2")),
-                                       br(),
-                                       splitLayout(actionButton("go3","Formation de l'équipe 3"),actionButton("go4","Formation de l'équipe 4")),
-                                       br(),
-                                       splitLayout(actionButton("go5","Formation de l'équipe 5"),actionButton("go6","Formation de l'équipe 6")),
-                                       br(),
-                                       splitLayout(actionButton("go7","Formation de l'équipe 7"),actionButton("go8","Formation de l'équipe 8")),
-                                       br(),
-                                       splitLayout(actionButton("go9","Formation de l'équipe 9"), actionButton("go10","Formation de l'équipe 10"))
+                                       actionButton("go","Formation des équipes")
                                        
                                    )
                                    
@@ -147,107 +139,81 @@ server <- function(input, output) {
     players <- reactive({player()[player() != ""]})
 
     
-    observeEvent(input$go1,
+    observeEvent(input$go,
     { 
-    output$player1a <- renderText({players()[1]})
-    output$player1b <- renderText({players()[2]})
-    })
-    
-    observeEvent(input$go2,
-                 { 
+                    output$player1a <- renderText({players()[1]})
+                    output$player1b <- renderText({players()[2]})
+
                      output$player2a <- renderText({players()[3]})
                      output$player2b <- renderText({players()[4]})
-                 })
-    
-    observeEvent(input$go3,
-                 { 
+
                      output$player3a <- renderText({players()[5]})
                      output$player3b <- renderText({players()[6]})
-                 })
-    
-    observeEvent(input$go4,
-                 { 
+
                      output$player4a <- renderText({players()[7]})
                      output$player4b <- renderText({players()[8]})
-                 })
-    
-    observeEvent(input$go5,
-                 { 
+
                      output$player5a <- renderText({players()[9]})
                      output$player5b <- renderText({players()[10]})
-                 })
-    
-    observeEvent(input$go6,
-                 { 
+
                      output$player6a <- renderText({players()[11]})
                      output$player6b <- renderText({players()[12]})
-                 })
-    
-    observeEvent(input$go7,
-                 { 
+
                      output$player7a <- renderText({players()[13]})
                      output$player7b <- renderText({players()[14]})
-                 })
-    
-    observeEvent(input$go8,
-                 { 
+
                      output$player8a <- renderText({players()[15]})
                      output$player8b <- renderText({players()[16]})
-                 })
-    
-    observeEvent(input$go9,
-                 { 
+
                      output$player9a <- renderText({players()[17]})
                      output$player9b <- renderText({players()[18]})
-                 })
-    
-    observeEvent(input$go10,
-                 { 
+
                      output$player10a <- renderText({players()[19]})
                      output$player10b <- renderText({players()[20]})
-                 })
+    })
+                     
  
-    observeEvent(input$go1,
+    observeEvent(input$go,
                  {disable("player1")})
-    observeEvent(input$go1,
+    observeEvent(input$go,
                  {disable("player2")})
-    observeEvent(input$go1,
+    observeEvent(input$go,
                  {disable("player3")})
-    observeEvent(input$go1,
+    observeEvent(input$go,
                  {disable("player4")})
-    observeEvent(input$go1,
+    observeEvent(input$go,
                  {disable("player5")})
-    observeEvent(input$go1,
+    observeEvent(input$go,
                  {disable("player6")})
-    observeEvent(input$go1,
+    observeEvent(input$go,
                  {disable("player7")})
-    observeEvent(input$go1,
+    observeEvent(input$go,
                  {disable("player8")})
-    observeEvent(input$go1,
+    observeEvent(input$go,
                  {disable("player9")})
-    observeEvent(input$go1,
+    observeEvent(input$go,
                  {disable("player10")})
-    observeEvent(input$go1,
+    observeEvent(input$go,
                  {disable("player11")})
-    observeEvent(input$go1,
+    observeEvent(input$go,
                  {disable("player12")})
-    observeEvent(input$go1,
+    observeEvent(input$go,
                  {disable("player13")})
-    observeEvent(input$go1,
+    observeEvent(input$go,
                  {disable("player14")})
-    observeEvent(input$go1,
+    observeEvent(input$go,
                  {disable("player15")})
-    observeEvent(input$go1,
+    observeEvent(input$go,
                  {disable("player16")})
-    observeEvent(input$go1,
+    observeEvent(input$go,
              {disable("player17")})
-    observeEvent(input$go1,
+    observeEvent(input$go,
              {disable("player18")})
-    observeEvent(input$go1,
+    observeEvent(input$go,
              {disable("player19")})
-    observeEvent(input$go1,
+    observeEvent(input$go,
              {disable("player20")})
-    observeEvent(input$go1,
+    observeEvent(input$go,
                  {disable("go")})
     
     
